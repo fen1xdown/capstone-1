@@ -12,7 +12,7 @@ const Home = (props) => {
 	return (
 		<>
 			<Container>
-				<Typography>
+				<Typography variant="h3">
 					Home
 				</Typography>
 				<Grid>
@@ -31,7 +31,7 @@ const Home = (props) => {
 								handleSelectOnChange={props.handleSelectOnChange}
 								key={index} />
 						))
-					}
+					}					
 				</Grid>
 
 			</Container>

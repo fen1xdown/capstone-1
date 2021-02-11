@@ -1,4 +1,5 @@
 const Products = [
+	//games
 	{
 		id: 1,
 		name: "NHL 21",

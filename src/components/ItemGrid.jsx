@@ -35,8 +35,8 @@ const ItemGrid = (props) => {
 				<Card className={classes.card}>
 					<img />
 					<CardContent>
-						<Typography variant="body1">
-							Test
+						<Typography variant="body1" className={classes.item}>
+							{props.cur.name}
 						</Typography>
 					</CardContent>
 				</Card>
