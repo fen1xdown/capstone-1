@@ -11,9 +11,15 @@ import {
 	NativeSelect
 } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => {
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 
-});
+const useStyles = makeStyles((theme) => ({
+	card: { marginBottom: 20, flexDirection: "row" },
+	img: { width: 300, height: 450, float: "left", padding: 15 },
+	item_text: { marginLeft: 310, width: 800 },
+}));
+
+
 
 const ItemGrid = (props) => { 
 	const classes = useStyles();
@@ -29,15 +35,44 @@ const ItemGrid = (props) => {
 		optionArray.push(i);
 	}
 
+	const currentItem = props.cur;
+
 	return (
 		<>
 			<Grid item md>
 				<Card className={classes.card}>
-					<img />
-					<CardContent>
-						<Typography variant="body1" className={classes.item}>
+					<img src={props.cur.img} alt="N/A" className={classes.img} />
+					<CardContent>						
+						<Typography variant="h3" className={classes.item}>
 							{props.cur.name}
 						</Typography>
+						<Typography>
+						</Typography>
+						<Typography>
+							Developer: {props.cur.developer}
+						</Typography>
+						<Typography>
+							Avalible for: {props.cur.system}
+						</Typography>
+						<Typography>
+							Items in stock: {props.cur.quantity}
+						</Typography>
+						<CardActions>
+
+							<NativeSelect defaultValue="1"
+								onChange={(e) => handleSelectOnChange(e.target.value)}>
+								{optionArray.map((cur) => (
+									<option key={cur} value={cur}>
+										{cur}
+									</option>
+								))}
+							</NativeSelect>
+								<Button onClick={() => props.handleOnClick(currentItem, itemQuantity)}>
+									<AddShoppingCartIcon />
+									
+								</Button>
+							
+						</CardActions>
 					</CardContent>
 				</Card>
 			</Grid>
