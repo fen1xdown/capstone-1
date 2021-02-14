@@ -3,8 +3,9 @@
     "",
     "\\src",
     "\\src\\Assets",
+    "\\src\\Assets\\img",
     "\\src\\components"
   ],
-  "SelectedNode": "\\src\\components\\Home.jsx",
+  "SelectedNode": "\\src\\components\\Cart.jsx",
   "PreviewInSolutionExplorer": false
 }

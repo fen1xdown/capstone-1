@@ -1,21 +1,12 @@
 import React from "react";
 
-import {
-	Typography,
-	Grid,
-	makeStyles,
-	Card,
-	CardContent,
-	CardActions,
-	Button,
-	NativeSelect
-} from "@material-ui/core";
+import { Typography, Grid, makeStyles, Card, CardContent, CardActions, Button, NativeSelect} from "@material-ui/core";
 
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 
 const useStyles = makeStyles((theme) => ({
 	card: { marginBottom: 20, flexDirection: "row" },
-	img: { width: 300, height: 450, float: "left", padding: 15 },
+	img: { width: 300, height: 450, float: "left", padding: 20 },
 	item_text: { marginLeft: 310, width: 800 },
 }));
 
@@ -26,7 +17,7 @@ const ItemGrid = (props) => {
 
 	let itemQuantity = 1;
 
-	const handleSelectOnChange = (selectQuantity) => {
+	const selectOnChange = (selectQuantity) => {
 		itemQuantity = selectQuantity;
 	};
 
@@ -60,14 +51,14 @@ const ItemGrid = (props) => {
 						<CardActions>
 
 							<NativeSelect defaultValue="1"
-								onChange={(e) => handleSelectOnChange(e.target.value)}>
+								onChange={(e) => selectOnChange(e.target.value)}>
 								{optionArray.map((cur) => (
 									<option key={cur} value={cur}>
 										{cur}
 									</option>
 								))}
 							</NativeSelect>
-								<Button onClick={() => props.handleOnClick(currentItem, itemQuantity)}>
+								<Button onClick={() => props.btnOnClick(currentItem, itemQuantity)}>
 									<AddShoppingCartIcon />
 									
 								</Button>

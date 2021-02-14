@@ -20,15 +20,15 @@ const Home = (props) => {
 						? searchArray.map((cur, index) => (
 							<itemGrid
 								cur={cur}
-								handleOnClick={props.handleOnClick}
-								handleSelectOnChange={props.handleSelectOnChange}
+								btnOnClick={props.btnOnClick}
+								selectOnChange={props.selectOnChange}
 								key={index} />
 						))
 						: Products.map((cur, index) => (
 							<ItemGrid
 								cur={cur}
-								handleOnClick={props.handleOnClick}
-								handleSelectOnChange={props.handleSelectOnChange}
+								btnOnClick={props.btnOnClick}
+								selectOnChange={props.selectOnChange}
 								key={index} />
 						))
 					}					
