@@ -16,7 +16,7 @@ const Home = (props) => {
 					Home
 				</Typography>
 				<Grid>
-					{props.searchBoo1 === true
+					{props.setUserInput === true
 						? searchArray.map((cur, index) => (
 							<itemGrid
 								cur={cur}

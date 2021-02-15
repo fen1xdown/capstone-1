@@ -37,8 +37,23 @@ const ItemGrid = (props) => {
 						<Typography variant="h3" className={classes.item}>
 							{props.cur.name}
 						</Typography>
-						<Typography>
+						<Typography variant="h4">
+							Price: ${props.cur.price}
 						</Typography>
+						<CardActions>
+							<NativeSelect defaultValue="1"
+								onChange={(e) => selectOnChange(e.target.value)}>
+								{optionArray.map((cur) => (
+									<option key={cur} value={cur}>
+										{cur}
+									</option>
+								))}
+							</NativeSelect>
+							<Button onClick={() => props.btnOnClick(currentItem, itemQuantity)}>
+								<AddShoppingCartIcon />
+
+							</Button>
+						</CardActions>
 						<Typography>
 							Developer: {props.cur.developer}
 						</Typography>
@@ -48,22 +63,7 @@ const ItemGrid = (props) => {
 						<Typography>
 							Items in stock: {props.cur.quantity}
 						</Typography>
-						<CardActions>
 
-							<NativeSelect defaultValue="1"
-								onChange={(e) => selectOnChange(e.target.value)}>
-								{optionArray.map((cur) => (
-									<option key={cur} value={cur}>
-										{cur}
-									</option>
-								))}
-							</NativeSelect>
-								<Button onClick={() => props.btnOnClick(currentItem, itemQuantity)}>
-									<AddShoppingCartIcon />
-									
-								</Button>
-							
-						</CardActions>
 					</CardContent>
 				</Card>
 			</Grid>

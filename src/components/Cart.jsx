@@ -5,10 +5,13 @@ import { Container, Typography, Card, Grid, makeStyles, CardActions, Button } fr
 import useForceUpdate from "use-force-update";
 
 const useStyles = makeStyles((theme) => ({
-	card: { width: 150 },
+	img: { width: 100, float: "left" },
+	card: { width: 750 },
 	itemText: { width: 600 },
-
-
+	costText: { textAlign: "right" },
+	checkoutButton: { float: "right" },
+	totalDiv: { float: "right", textAlign: "right" },
+	cardContainer: {padding: 25},
 }))
 
 const Cart = (props) => {
@@ -28,7 +31,7 @@ const Cart = (props) => {
 		total = itemPrices.reduce(reducer);
 	}
 
-	const singleDelete = (index) => {
+	const thisDelete = (index) => {
 		items.splice(index, 1);
 		props.setCartItems(items);
 		forceUpdate();
@@ -50,16 +53,28 @@ const Cart = (props) => {
 							<Grid key={num} item md>
 								<Card className={classes.card}>
 									<img scr={cur.img} alt="N/A" className={classes.img} />
-									<Typography>
+									<Typography variant="h3" className={classes.itemText}>
 										{cur.name}
 									</Typography>
-									<Typography>
+									<Typography variant="h5" textAlign="right">
 										{cur.price}
 									</Typography>
+									<CardActions>
+										<Button className={classes.deleteButton} onClick={() => thisDelete (num)}>
+											Delete Item
+										</Button>
+									</CardActions>
 								</Card>
 							</Grid>
 						))
 					)}
+				{items.length === 0 ? (
+					<></>
+				) : (
+						<div className={classes.totalDiv}>
+
+						</div>
+						)}
 			</Card>
 		</Container>
 	);

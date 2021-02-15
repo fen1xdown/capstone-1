@@ -4,17 +4,22 @@ import Home from "./Home";
 import useForceUpdate from "use-force-update";
 import { Drawer, List, ListItem, ListItemText, InputBase, makeStyles, IconButton, ListItemIcon, withStyles } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
 import Badge from "@material-ui/core/Badge";
 import Cart from "./Cart";
-import ItemGrid from "./ItemGrid"
+import ItemGrid from "./ItemGrid";
+import Products from "../Assets/Products";
 
 
 const Nav = () => {
 
 	const [cartQuantity, setCartQuantity] = useState(0);
 	const [cartItems, setCartItems] = useState([]);
-
+	const [userSearch, setUserSearch] = useState("");
+	const [searchArray, setSearchArray] = useState([]);
+	const [userInput, setUserInput] = useState(false);
+ 
 	const StyledBadge = withStyles((theme) => ({
 		badge: {
 			border: `5px solid ${theme.palette.background.paper}`,
@@ -40,11 +45,38 @@ const Nav = () => {
 		}
 		setCartItems(cartItems.concat(itemsArray));
 	}
+	const searchSubmit = () => {
+		let userArray = [];
+		const lowerCaseInput = userSearch.toLowerCase();
+
+		setSearchArray(userArray);
+		setUserInput(true);
+		Products.forEach((product) => {
+			const name = product.name.toLowerCase();
+			const id = product.id;
+			const dev = product.developer.toLowerCase();
+
+			if (name.search(lowerCaseInput) !== -1) {
+				userArray.push(product);
+				setSearchArray(userArray);
+			} else if (id.toString().search(lowerCaseInput) !== -1) {
+				userArray.push(product);
+				setSearchArray(userArray);
+			} else if (dev.search(lowerCaseInput) !== -1) {
+				userArray.push(product);
+				setSearchArray(userArray);
+			} else console.log("nothing here >.>");
+		});
+	};
 
 	const forceUpdate = useForceUpdate();
 
 	const SelectOnChange = (data) => {
 		console.log(data);
+	};
+
+	const submitOnChange = (str) => {
+		setUserSearch(str);
 	};
 
 	const clearCartbtnOnClick = () => {
@@ -82,11 +114,21 @@ const Nav = () => {
 								</ListItemIcon>
 							</ListItem>
 						</Link>
+						<InputBase value={userSearch} placeholder="Search" onChange={(e) => submitOnChange(e.target.value)} />
+						<ListItem>
+						<ListItemIcon>
+							<IconButton type="submit" onClick={() => searchSubmit()}>
+								<SearchIcon />
+							</IconButton>
+							</ListItemIcon>
+						</ListItem>
 					</List>
 				</Drawer>
 				<Switch>
 					<Route exact path="/">
 						<Home
+							searchArray={searchArray}
+							userInput={userInput}
 							btnOnClick={btnOnClick}
 							SelectOnChange={SelectOnChange} />
 					</Route>
