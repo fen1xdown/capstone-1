@@ -6,11 +6,11 @@ import useForceUpdate from "use-force-update";
 
 const useStyles = makeStyles((theme) => ({
 	img: { width: 100, float: "left" },
-	card: { width: 750 },
+	card: { width: 750, backgroundColor: "#6b6b6b" },
 	itemText: { width: 600 },
-	costText: { textAlign: "right" },
+	costText: { textalign: "right" },
 	checkoutButton: { float: "right" },
-	totalDiv: { float: "right", textAlign: "right" },
+	totalDiv: { float: "right", textalign: "right" },
 	cardContainer: {padding: 25},
 }))
 
@@ -40,7 +40,7 @@ const Cart = (props) => {
 
 	return (
 		<Container className={classes.container}>
-			<Typography>
+			<Typography variant="h2">
 				My Cart
 			</Typography>
 			<Card className={classes.cardContainer}>
@@ -52,7 +52,6 @@ const Cart = (props) => {
 						items.map((cur, num) => (
 							<Grid key={num} item md>
 								<Card className={classes.card}>
-									<img scr={cur.img} alt="N/A" className={classes.img} />
 									<Typography variant="h3" className={classes.itemText}>
 										{cur.name}
 									</Typography>
@@ -60,7 +59,7 @@ const Cart = (props) => {
 										{cur.price}
 									</Typography>
 									<CardActions>
-										<Button className={classes.deleteButton} onClick={() => thisDelete (num)}>
+										<Button className={classes.deleteButton} onClick={() => thisDelete (num)} float="right">
 											Delete Item
 										</Button>
 									</CardActions>
@@ -72,9 +71,22 @@ const Cart = (props) => {
 					<></>
 				) : (
 						<div className={classes.totalDiv}>
-
+							<Typography variant="h5" className={classes.checkoutText}>
+								Sub-Total: $ {total.toFixed(2)}
+							</Typography>
+							<Typography variant="h5" className={classes.checkoutText}>
+								Tax: $ {(total * 0.0825).toFixed(2)}
+							</Typography>
+							<Typography variant="h5" className={classes.checkoutText}>
+								Total: $ {(total *1.0825).toFixed(2)}
+							</Typography>
 						</div>
 						)}
+			</Card>
+			<Card>
+				<div>
+
+				</div>
 			</Card>
 		</Container>
 	);

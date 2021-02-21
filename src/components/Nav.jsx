@@ -22,7 +22,7 @@ const Nav = () => {
  
 	const StyledBadge = withStyles((theme) => ({
 		badge: {
-			border: `5px solid ${theme.palette.background.paper}`,
+			border: `5px solid ${theme.palette.background.default}`,
 		},
 	}))(Badge);
 
@@ -95,8 +95,8 @@ const Nav = () => {
 
 	return (
 		<Router>
-			<div style={{display: "flex"}}>
-				<Drawer style={{ width: "150px" }} anchor="left" open={true} variant="persistent" classes={{ paper: classes.drawerPaper }}>
+			<div style={{ display: "flex", backgroundColor: "#b4b4b4" }}>
+				<Drawer style={{ width: "100px" }} anchor="left" open={true} variant="persistent" classes={{ paper: classes.drawerPaper }}>
 					<List>
 						<Link to="/" className={classes.link}>
 							<ListItem button>

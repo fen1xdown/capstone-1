@@ -7,7 +7,7 @@ const Products = [
 		system: ["xbox one/ Series X/S, ", "PS4/PS5"],
 		developer: "EA",
 		category: ["sports", "hockey", "console"],
-		img: "https://i1.wp.com/russianmachineneverbreaks.com/wp-content/uploads/2020/08/nhl21-alex-ovechkin-cover-art.jpg?resize=1080%2C1350&ssl=1",
+		img: "https://i1.wp.com/russianmachineneverbreaks.com/wp-content/uploads/2020/08/nhl21-alex-ovechkin-cover-art.jpg?resize=1080%2C1350&ssl=1/img/nhl21.jpg",
 		quantity: 9,
 	},
 	{
