@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Home from "./Home";
 import useForceUpdate from "use-force-update";
 import { Drawer, List, ListItem, ListItemText, InputBase, makeStyles, IconButton, ListItemIcon, withStyles } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
 import Badge from "@material-ui/core/Badge";
+import Home from "./Home";
 import Cart from "./Cart";
-import ItemGrid from "./ItemGrid";
 import Products from "../Assets/Products";
 
 
@@ -114,14 +113,14 @@ const Nav = () => {
 								</ListItemIcon>
 							</ListItem>
 						</Link>
-						<InputBase value={userSearch} placeholder="Search" onChange={(e) => submitOnChange(e.target.value)} />
 						<ListItem>
-						<ListItemIcon>
-							<IconButton type="submit" onClick={() => searchSubmit()}>
-								<SearchIcon />
-							</IconButton>
+							<ListItemIcon>
+								<IconButton type="submit" onClick={() => searchSubmit()}>
+									<SearchIcon />
+								</IconButton>
 							</ListItemIcon>
 						</ListItem>
+						<InputBase value={userSearch} placeholder="Search" onChange={(e) => submitOnChange(e.target.value)} />
 					</List>
 				</Drawer>
 				<Switch>

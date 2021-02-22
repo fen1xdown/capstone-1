@@ -39,7 +39,7 @@ const Cart = (props) => {
 	};
 
 	return (
-		<Container className={classes.container}>
+		<Container className={classes.container} height="2096px">
 			<Typography variant="h2">
 				My Cart
 			</Typography>
@@ -52,6 +52,7 @@ const Cart = (props) => {
 						items.map((cur, num) => (
 							<Grid key={num} item md>
 								<Card className={classes.card}>
+									<img src={cur.img} className={classes.img} />
 									<Typography variant="h3" className={classes.itemText}>
 										{cur.name}
 									</Typography>
