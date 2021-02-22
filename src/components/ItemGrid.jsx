@@ -5,9 +5,10 @@ import { Typography, Grid, makeStyles, Card, CardContent, CardActions, Button, N
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 
 const useStyles = makeStyles((theme) => ({
-	card: { marginBottom: 20, flexDirection: "row", backgroundColor: "#6b6b6b"},
+	card: { marginBottom: 20, flexDirection: "row", backgroundColor: "#6b6b6b" },
 	img: { width: 300, height: 450, float: "left", padding: 20 },
 	item_text: { marginLeft: 310, width: 800 },
+	Grid: {marginTop: 250,}
 }));
 
 
@@ -41,17 +42,8 @@ const ItemGrid = (props) => {
 							Price: ${props.cur.price}
 						</Typography>
 						<CardActions>
-							<NativeSelect defaultValue="1"
-								onChange={(e) => selectOnChange(e.target.value)}>
-								{optionArray.map((cur) => (
-									<option key={cur} value={cur}>
-										{cur}
-									</option>
-								))}
-							</NativeSelect>
 							<Button onClick={() => props.btnOnClick(currentItem, itemQuantity)}>
 								<AddShoppingCartIcon />
-
 							</Button>
 						</CardActions>
 						<Typography>
@@ -63,7 +55,9 @@ const ItemGrid = (props) => {
 						<Typography>
 							Items in stock: {props.cur.quantity}
 						</Typography>
-
+						<Typography>
+							SKU: {props.cur.id}
+						</Typography>
 					</CardContent>
 				</Card>
 			</Grid>

@@ -10,6 +10,7 @@ import Home from "./Home";
 import Cart from "./Cart";
 import Products from "../Assets/Products";
 import GS from "../Assets/img/GS.png";
+import SearchBar from "material-ui-search-bar";
 
 
 const Nav = () => {
@@ -22,13 +23,13 @@ const Nav = () => {
  
 	const StyledBadge = withStyles((theme) => ({
 		badge: {
-			border: `5px solid ${theme.palette.background.default}`,
+			border: `10px solid ${theme.palette.background.default}`,
 		},
 	}))(Badge);
 
 
 	const useStyles = makeStyles((theme) => ({
-		drawerPaper: { width: "inherit"}
+		drawerPaper: { hieght: "inherit", display: "inline"}
 	}))
 
 	const btnOnClick = (data, quantity) => {
@@ -46,29 +47,22 @@ const Nav = () => {
 		}
 		setCartItems(cartItems.concat(itemsArray));
 	}
-	const searchSubmit = () => {
-		let userArray = [];
-		const lowerCaseInput = userSearch.toLowerCase();
+	//const searchSubmit = () => {
+	//	let userArray = [];
+	//	const lowerCaseInput = userSearch.toLowerCase();
 
-		setSearchArray(userArray);
-		setUserInput(true);
-		Products.forEach((product) => {
-			const name = product.name.toLowerCase();
-			const id = product.id;
-			const dev = product.developer.toLowerCase();
+	//	setSearchArray(userArray);
+	//	setUserInput(true);
+	//	Products.forEach((product) => {
+	//		const name = product.name.toLowerCase();
 
-			if (name.search(lowerCaseInput) !== -1) {
-				userArray.push(product);
-				setSearchArray(userArray);
-			} else if (id.toString().search(lowerCaseInput) !== -1) {
-				userArray.push(product);
-				setSearchArray(userArray);
-			} else if (dev.search(lowerCaseInput) !== -1) {
-				userArray.push(product);
-				setSearchArray(userArray);
-			} else console.log("nothing here >.>");
-		});
-	};
+	//			if (name.search(lowerCaseInput) !== -1) {
+	//				userArray.push(product);
+	//				setSearchArray(userArray);
+	//				console.log(name.search);
+	//			} else console.log("nothing here >.>");
+	//		});
+	//};
 
 	const forceUpdate = useForceUpdate();
 
@@ -80,13 +74,13 @@ const Nav = () => {
 		setUserSearch(str);
 	};
 
-	const clearCartbtnOnClick = () => {
-		setCartItems([]);
-	};
+	//const clearCartbtnOnClick = () => {
+	//	setCartItems([]);
+	//};
 
-	const checkout = () => {
-		clearCartbtnOnClick();
-	};
+	//const checkout = () => {
+	//	clearCartbtnOnClick();
+	//};
 
 	const update = () => {
 		forceUpdate();
@@ -97,14 +91,13 @@ const Nav = () => {
 	return (
 		<Router>
 			<div style={{ display: "flex", backgroundColor: "#b4b4b4" }}>
-				<Drawer style={{ width: "200px" }} anchor="left" open={true} variant="persistent" classes={{ paper: classes.drawerPaper }}>
+				<Drawer style={{ width: "100px" }} anchor="left" open={true} variant="persistent" classes={{ paper: classes.drawerPaper }}>
 					<List>
-						<img style={{width: "200px"}} src={GS} className={classes.img} alt="GameStonks" />
-							<Link to="/" className={classes.link}>
+						<img style={{ width: "150px"}} src={GS} className={classes.img} alt="GameStonks" />
+							<Link to="/" className={classes.link} >
 							<ListItem button>
 								<ListItemIcon>
 									<HomeIcon />
-									Home
 								</ListItemIcon>
 							</ListItem>
 						</Link>
@@ -113,20 +106,10 @@ const Nav = () => {
 								<ListItemIcon>
 									<StyledBadge badgeContent={classes.link}>
 										<ShoppingCartIcon />
-										Cart
 									</StyledBadge>
 								</ListItemIcon>
 							</ListItem>
 						</Link>
-						<hr/>
-						<InputBase value={userSearch} placeholder="Search" onChange={(e) => submitOnChange(e.target.value)} />
-						<ListItem>
-							<ListItemIcon>
-								<IconButton type="submit" onClick={() => searchSubmit()}>
-									<SearchIcon />
-								</IconButton>
-							</ListItemIcon>
-						</ListItem>
 
 					</List>
 				</Drawer>
@@ -150,3 +133,7 @@ const Nav = () => {
 };
 
 export default Nav;
+
+
+//	TODO: value of <SearchBar> returning as undefined, find out why
+// 	<SearchBar value={userSearch} onChange={(e) => submitOnChange(e.target.value)} />

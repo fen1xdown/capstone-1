@@ -6,7 +6,7 @@ import useForceUpdate from "use-force-update";
 
 const useStyles = makeStyles((theme) => ({
 	img: { width: 100, float: "left" },
-	card: { width: 750, backgroundColor: "#6b6b6b" },
+	card: { width: 750, backgroundColor: "#6b6b6b", margin: 15 },
 	itemText: { width: 600 },
 	costText: { textalign: "right" },
 	checkoutButton: { float: "right" },
@@ -56,8 +56,8 @@ const Cart = (props) => {
 									<Typography variant="h3" className={classes.itemText}>
 										{cur.name}
 									</Typography>
-									<Typography variant="h5" textAlign="right">
-										{cur.price}
+									<Typography style={{display: "flex"}} variant="h5" float="right">
+										${cur.price}
 									</Typography>
 									<CardActions>
 										<Button className={classes.deleteButton} onClick={() => thisDelete (num)} float="right">
