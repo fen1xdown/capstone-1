@@ -9,6 +9,7 @@ import Badge from "@material-ui/core/Badge";
 import Home from "./Home";
 import Cart from "./Cart";
 import Products from "../Assets/Products";
+import GS from "../Assets/img/GS.png";
 
 
 const Nav = () => {
@@ -24,6 +25,7 @@ const Nav = () => {
 			border: `5px solid ${theme.palette.background.default}`,
 		},
 	}))(Badge);
+
 
 	const useStyles = makeStyles((theme) => ({
 		drawerPaper: { width: "inherit"}
@@ -95,12 +97,14 @@ const Nav = () => {
 	return (
 		<Router>
 			<div style={{ display: "flex", backgroundColor: "#b4b4b4" }}>
-				<Drawer style={{ width: "100px" }} anchor="left" open={true} variant="persistent" classes={{ paper: classes.drawerPaper }}>
+				<Drawer style={{ width: "200px" }} anchor="left" open={true} variant="persistent" classes={{ paper: classes.drawerPaper }}>
 					<List>
-						<Link to="/" className={classes.link}>
+						<img style={{width: "200px"}} src={GS} className={classes.img} alt="GameStonks" />
+							<Link to="/" className={classes.link}>
 							<ListItem button>
 								<ListItemIcon>
 									<HomeIcon />
+									Home
 								</ListItemIcon>
 							</ListItem>
 						</Link>
@@ -109,10 +113,13 @@ const Nav = () => {
 								<ListItemIcon>
 									<StyledBadge badgeContent={classes.link}>
 										<ShoppingCartIcon />
+										Cart
 									</StyledBadge>
 								</ListItemIcon>
 							</ListItem>
 						</Link>
+						<hr/>
+						<InputBase value={userSearch} placeholder="Search" onChange={(e) => submitOnChange(e.target.value)} />
 						<ListItem>
 							<ListItemIcon>
 								<IconButton type="submit" onClick={() => searchSubmit()}>
@@ -120,14 +127,14 @@ const Nav = () => {
 								</IconButton>
 							</ListItemIcon>
 						</ListItem>
-						<InputBase value={userSearch} placeholder="Search" onChange={(e) => submitOnChange(e.target.value)} />
+
 					</List>
 				</Drawer>
 				<Switch>
 					<Route exact path="/">
 						<Home
-							searchArray={searchArray}
 							userInput={userInput}
+							searchArray={searchArray}
 							btnOnClick={btnOnClick}
 							SelectOnChange={SelectOnChange} />
 					</Route>
