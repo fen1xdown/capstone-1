@@ -12,26 +12,26 @@ const Home = (props) => {
 	return (
 		<>
 			<Container>
-				<Typography>
+				<Typography variant="h3">
 					Home
 				</Typography>
 				<Grid>
-					{props.searchBoo1 === true
+					{props.setUserInput === true
 						? searchArray.map((cur, index) => (
 							<itemGrid
 								cur={cur}
-								handleOnClick={props.handleOnClick}
-								handleSelectOnChange={props.handleSelectOnChange}
+								btnOnClick={props.btnOnClick}
+								selectOnChange={props.selectOnChange}
 								key={index} />
 						))
 						: Products.map((cur, index) => (
 							<ItemGrid
 								cur={cur}
-								handleOnClick={props.handleOnClick}
-								handleSelectOnChange={props.handleSelectOnChange}
+								btnOnClick={props.btnOnClick}
+								selectOnChange={props.selectOnChange}
 								key={index} />
 						))
-					}
+					}					
 				</Grid>
 
 			</Container>
